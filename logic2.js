@@ -33,11 +33,11 @@ app.get('/rollDice2', (req, res) => {
     res.send(result);
 
     // Update the position in the JSON file
-    updatePosition('player2.json', randomNum1 + randomNum2);
+    updatePlayerData('player2.json', randomNum1 + randomNum2);
 });
 
 // Function to update the position in a JSON file
-function updatePosition(filename, roll) {
+function updatePlayerData(filename, roll) {
     const filePath = path.join(__dirname, filename);
 
     // Read the existing data
@@ -56,20 +56,20 @@ function updatePosition(filename, roll) {
     console.log(newPositionElement);
 
     // Write the updated data back to the file
-    fs.writeFileSync(filePath, JSON.stringify({ position: data.position, country: newPositionElement }, null, 2));
+    fs.writeFileSync(filePath, JSON.stringify({ position: data.position, country: newPositionElement, money: data.money}, null, 2));
 }
 
 
-// Route to get the position from the JSON file for Player 1
-app.get('/getPosition1', (req, res) => {
+// Route to get the position and money from the JSON file for Player 1
+app.get('/getPlayerData1', (req, res) => {
     const data = readJsonFile('player1.json');
-    res.send({ position: data.position, country: data.country});
+    res.send({ position: data.position, country: data.country, money: data.money });
 });
 
-// Route to get the position from the JSON file for Player 2
-app.get('/getPosition2', (req, res) => {
+// Route to get the position and money from the JSON file for Player 2
+app.get('/getPlayerData2', (req, res) => {
     const data = readJsonFile('player2.json');
-    res.send({ position: data.position, country: data.country});
+    res.send({ position: data.position, country: data.country, money: data.money });
 });
 
 // Function to read a JSON file

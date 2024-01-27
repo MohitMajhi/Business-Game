@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Business</title>
+    <link rel="stylesheet" href="style.css">
     <script>
         async function rollDice(player) {
             const response = await fetch(`/rollDice${player}`);
@@ -11,16 +12,16 @@
             console.log(data);
 
             // Fetch the position after rolling the dice
-            const positionResponse = await fetch(`/getPosition${player}`);
-            const positionData = await positionResponse.json();
-            document.getElementById(`result${player}`).innerText = `Position: ${positionData.position} - Country: ${positionData.country}`;
+            const playerDataResponse = await fetch(`/getPlayerData${player}`);
+            const playerData = await playerDataResponse.json();
+            document.getElementById(`result${player}`).innerText = `Position: ${playerData.position} - Country: ${playerData.country} - Money Available: ${playerData.money}`;
         }
 
-        async function updatePosition(player) {
-            const response = await fetch(`/getPosition${player}`);
+        async function updatePlayerData(player) {
+            const response = await fetch(`/getPlayerData${player}`);
             const data = await response.json();
             console.log("Data received:", data);
-            document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country}`;
+            document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country} - Money available: ${dataZ.money}`;
         }
 
         // Update positions every second (adjust the interval as needed)
