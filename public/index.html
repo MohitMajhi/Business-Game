@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function rollDice(player) {
+            const response = await fetch(`/rollDice${player}`);
+            const data = await response.text();
+            console.log(data);
+
+            // Fetch the position after rolling the dice
+            const positionResponse = await fetch(`/getPosition${player}`);
+            const positionData = await positionResponse.json();
+            document.getElementById(`result${player}`).innerText = `Position: ${positionData.position}`;
+        }
+        async function updatePosition(player) {
+            const response = await fetch(`/getPosition${player}`);
+            const data = await response.json();
+            document.getElementById(`result${player}`).innerText = `Position: ${data.position}`;
+        }
+
+        // Update positions every second (adjust the interval as needed)
+        setInterval(() => {
+            updatePosition(1);
+            updatePosition(2);
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div>
+        Player 1
+    </div>
+    <div>
+        <button type="button" id="player1" onclick="rollDice(1)">Roll</button>
+        <p id="result1"></p>
+    </div>
+    <div>
+        Player 2
+    </div>
+    <div>
+        <button type="button" id="player2" onclick="rollDice(2)">Roll</button>
+        <p id="result2"></p>
+    </div>
+</body>
+</html>
