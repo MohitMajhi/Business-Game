@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const gameBoard = require(path.join(__dirname, 'gameBoard.json')).country;
 
 const app = express();
 const port = 80;
@@ -50,21 +51,25 @@ function updatePosition(filename, roll) {
         data.position = (data.position + roll) - 36;
     }
 
+    // Get the element value corresponding to the new position
+    const newPositionElement = gameBoard[data.position];
+    console.log(newPositionElement);
+
     // Write the updated data back to the file
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    fs.writeFileSync(filePath, JSON.stringify({ position: data.position, country: newPositionElement }, null, 2));
 }
 
 
 // Route to get the position from the JSON file for Player 1
 app.get('/getPosition1', (req, res) => {
     const data = readJsonFile('player1.json');
-    res.send({ position: data.position });
+    res.send({ position: data.position, country: data.country});
 });
 
 // Route to get the position from the JSON file for Player 2
 app.get('/getPosition2', (req, res) => {
     const data = readJsonFile('player2.json');
-    res.send({ position: data.position });
+    res.send({ position: data.position, country: data.country});
 });
 
 // Function to read a JSON file

@@ -13,12 +13,14 @@
             // Fetch the position after rolling the dice
             const positionResponse = await fetch(`/getPosition${player}`);
             const positionData = await positionResponse.json();
-            document.getElementById(`result${player}`).innerText = `Position: ${positionData.position}`;
+            document.getElementById(`result${player}`).innerText = `Position: ${positionData.position} - Country: ${positionData.country}`;
         }
+
         async function updatePosition(player) {
             const response = await fetch(`/getPosition${player}`);
             const data = await response.json();
-            document.getElementById(`result${player}`).innerText = `Position: ${data.position}`;
+            console.log("Data received:", data);
+            document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country}`;
         }
 
         // Update positions every second (adjust the interval as needed)
