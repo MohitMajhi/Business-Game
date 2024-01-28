@@ -1,0 +1,404 @@
+{
+    "start":{
+        "Bonus": 1500
+    },
+    "singapore":{
+        "Color": "Blue",
+        "Price": 3000,
+        "Rent": {
+            "Site_Only": 300,
+            "1_House": 1300,
+            "2_Houses": 2600,
+            "3_Houses": 3900,
+            "Hotel": 4900
+        },
+        "Construction": {
+            "Cost_of_house": 3000,
+            "Cost_of_hotel": 3000
+        },
+        "Bank_Mortgage_Value": 1500
+    },
+    "mylesia":{
+        "Color": "Green",
+        "Price": 1500,
+        "Rent": {
+            "Site_Only": 200,
+            "1_House": 1200,
+            "2_Houses": 2400,
+            "3_Houses": 3600,
+            "Hotel": 4600
+        },
+        "Construction": {
+            "Cost_of_house": 1500,
+            "Cost_of_hotel": 1500
+        },
+        "Bank_Mortgage_Value": 800
+    },
+    "railways":{
+        "Color": "Silver",
+        "Price": 9500,
+        "Rent": 1500,
+        "Bank_Mortgage_Value": 5000,
+        "Pair": 2500
+    },
+    "china":{
+        "Color": "Blue",
+        "Price": 4500,
+        "Rent": {
+            "Site_Only": 450,
+            "1_House": 1450,
+            "2_Houses": 2900,
+            "3_Houses": 4350,
+            "Hotel": 5350
+        },
+        "Construction": {
+            "Cost_of_house": 4500,
+            "Cost_of_hotel": 4500
+        },
+        "Bank_Mortgage_Value": 2250
+    },
+    "petrolium":{
+        "Color": "Silver",
+        "Price": 5500,
+        "Rent": 500,
+        "Bank_Mortgage_Value": 1300,
+        "Pair": 1000
+    },
+    "saudi arabia":{
+        "Color": "Green",
+        "Price": 5500,
+        "Rent": {
+            "Site_Only": 600,
+            "1_House": 1600,
+            "2_Houses": 3200,
+            "3_Houses": 4800,
+            "Hotel": 5800
+        },
+        "Construction": {
+            "Cost_of_house": 5500,
+            "Cost_of_hotel": 5500
+        },
+        "Bank_Mortgage_Value": 2800
+    },
+    "india":{
+        "Color": "Blue",
+        "Price": 4500,
+        "Rent": {
+            "Site_Only": 550,
+            "1_House": 1550,
+            "2_Houses": 3100,
+            "3_Houses": 4650,
+            "Hotel": 5650
+        },
+        "Construction": {
+            "Cost_of_house": 5500,
+            "Cost_of_hotel": 5500
+        },
+        "Bank_Mortgage_Value": 2750
+    },
+    "jail":
+    {
+        "Bail": 500
+    },
+    "australia":{
+        "Color": "Yellow",
+        "Price": 3300,
+        "Rent": {
+            "Site_Only": 400,
+            "1_House": 1400,
+            "2_Houses": 2800,
+            "3_Houses": 4200,
+            "Hotel": 5200
+        },
+        "Construction": {
+            "Cost_of_house": 3300,
+            "Cost_of_hotel": 3300
+        },
+        "Bank_Mortgage_Value": 2000
+    },
+    "hong kong":{
+        "Color": "Blue",
+        "Price": 2000,
+        "Rent": {
+            "Site_Only": 200,
+            "1_House": 1200,
+            "2_Houses": 2400,
+            "3_Houses": 3600,
+            "Hotel": 4600
+        },
+        "Construction": {
+            "Cost_of_house": 2500,
+            "Cost_of_hotel": 2500
+        },
+        "Bank_Mortgage_Value": 1000
+    },
+    "mexico":{
+        "Color": "Yellow",
+        "Price": 4000,
+        "Rent": {
+            "Site_Only": 900,
+            "1_House": 1800,
+            "2_Houses": 3600,
+            "3_Houses": 5400,
+            "Hotel": 6400
+        },
+        "Construction": {
+            "Cost_of_house": 4000,
+            "Cost_of_hotel": 4000
+        },
+        "Bank_Mortgage_Value": 2000
+    },
+    "roadways":{
+        "Color": "Silver",
+        "Price": 3500,
+        "Rent": 800,
+        "Bank_Mortgage_Value": 1800,
+        "Pair":{
+            "ticket": "railways",
+            "price": 1500
+        } 
+    },
+    "usa":{
+        "Color": "Yellow",
+        "Price": 8500,
+        "Rent": {
+            "Site_Only": 1000,
+            "1_House": 2000,
+            "2_Houses": 4000,
+            "3_Houses": 6000,
+            "Hotel": 7000
+        },
+        "Construction": {
+            "Cost_of_house": 8500,
+            "Cost_of_hotel": 8500
+        },
+        "Bank_Mortgage_Value": 5000
+    },
+    "japan":{
+        "Color": "Blue",
+        "Price": 2500,
+        "Rent": {
+            "Site_Only": 250,
+            "1_House": 1250,
+            "2_Houses": 2500,
+            "3_Houses": 3750,
+            "Hotel": 4750
+        },
+        "Construction": {
+            "Cost_of_house": 2500,
+            "Cost_of_hotel": 2500
+        },
+        "Bank_Mortgage_Value": 1250
+    },
+    "party house":{
+        "cost": 200
+    },
+    "italy":{
+        "Color": "Red",
+        "Price": 3500,
+        "Rent": {
+            "Site_Only": 200,
+            "1_House": 1200,
+            "2_Houses": 2400,
+            "3_Houses": 3600,
+            "Hotel": 4600
+        },
+        "Construction": {
+            "Cost_of_house": 2000,
+            "Cost_of_hotel": 2000
+        },
+        "Bank_Mortgage_Value": 1000
+    },
+    "brazil":{
+        "Color": "Yellow",
+        "Price": 2500,
+        "Rent": {
+            "Site_Only": 300,
+            "1_House": 1300,
+            "2_Houses": 2600,
+            "3_Houses": 3900,
+            "Hotel": 4900
+        },
+        "Construction": {
+            "Cost_of_house": 2500,
+            "Cost_of_hotel": 2500
+        },
+        "Bank_Mortgage_Value": 1300
+    },
+    "switzerland":{
+        "Color": "Red",
+        "Price": 3500,
+        "Rent": {
+            "Site_Only": 700,
+            "1_House": 1700,
+            "2_Houses": 3400,
+            "3_Houses": 5100,
+            "Hotel": 6100
+        },
+        "Construction": {
+            "Cost_of_house": 6500,
+            "Cost_of_hotel": 6500
+        },
+        "Bank_Mortgage_Value": 3300
+    },
+    "airways":{
+        "Color": "Silver",
+        "Price": 10500,
+        "Rent": 1500,
+        "Bank_Mortgage_Value": 5500,
+        "Pair": {
+            "ticket": "petrolium",
+            "price": 2500
+        } 
+    },
+    "germany":{
+        "Color": "Red",
+        "Price": 3500,
+        "Rent": {
+            "Site_Only": 400,
+            "1_House": 1400,
+            "2_Houses": 2800,
+            "3_Houses": 4200,
+            "Hotel": 5200
+        },
+        "Construction": {
+            "Cost_of_house": 3500,
+            "Cost_of_hotel": 3500
+        },
+        "Bank_Mortgage_Value": 1750
+    },
+    "canada":{
+        "Color": "Yellow",
+        "Price": 4000,
+        "Rent": {
+            "Site_Only": 400,
+            "1_House": 1400,
+            "2_Houses": 2800,
+            "3_Houses": 4200,
+            "Hotel": 5200
+        },
+        "Construction": {
+            "Cost_of_house": 4000,
+            "Cost_of_hotel": 4000
+        },
+        "Bank_Mortgage_Value": 2000
+    },
+    "resort":
+    {
+        "cost": 500
+    },
+    "egypt":{
+        "Color": "Green",
+        "Price": 3200,
+        "Rent": {
+            "Site_Only": 300,
+            "1_House": 1300,
+            "2_Houses": 2600,
+            "3_Houses": 3900,
+            "Hotel": 4900
+        },
+        "Construction": {
+            "Cost_of_house": 3200,
+            "Cost_of_hotel": 3200
+        },
+        "Bank_Mortgage_Value": 1500
+    },
+    "satellite":{
+        "Color": "Silver",
+        "Price": 2000,
+        "Rent": 500,
+        "Bank_Mortgage_Value": 1250,
+        "Pair":{
+            "ticket": "waterways",
+            "price": 1000
+        } 
+    },
+    "iran":{
+        "Color": "Green",
+        "Price": 2500,
+        "Rent": {
+            "Site_Only": 300,
+            "1_House": 1300,
+            "2_Houses": 2600,
+            "3_Houses": 3900,
+            "Hotel": 4900
+        },
+        "Construction": {
+            "Cost_of_house": 2500,
+            "Cost_of_hotel": 2500
+        },
+      "Bank_Mortgage_Value": 1250
+    },
+    "france":{
+        "Color": "Red",
+        "Price": 2500,
+        "Rent": {
+            "Site_Only": 300,
+            "1_House": 1300,
+            "2_Houses": 2600,
+            "3_Houses": 3900,
+            "Hotel": 4900
+        },
+        "Construction": {
+            "Cost_of_house": 2500,
+            "Cost_of_hotel": 2500
+        },
+        "Bank_Mortgage_Value": 1250
+    },
+    "waterways":{
+        "Color": "Silver",
+        "Price": 9500,
+        "Rent": 1400,
+        "Bank_Mortgage_Value": 2000,
+        "Pair": {
+            "ticket": "satellite",
+            "price": 2200
+        } 
+    },
+    "iraq":{
+        "Color": "Green",
+        "Price": 5000,
+        "Rent": {
+            "Site_Only": 500,
+            "1_House": 1500,
+            "2_Houses": 3000,
+            "3_Houses": 4500,
+            "Hotel": 5500
+        },
+        "Construction": {
+            "Cost_of_house": 5000,
+            "Cost_of_hotel": 5000
+        },
+        "Bank_Mortgage_Value": 2500
+    },
+    "england":{
+        "Color": "Red",
+        "Price": 2500,
+        "Rent": {
+            "Site_Only": 500,
+            "1_House": 1700,
+            "2_Houses": 3400,
+            "3_Houses": 5100,
+            "Hotel": 6100
+        },
+        "Construction": {
+            "Cost_of_house": 7000,
+            "Cost_of_hotel": 7000
+        },
+        "Bank_Mortgage_Value": 3500
+    },
+    "uno":{
+        "Message_2": "You rolled a 2 on Uno! Draw two cards.",
+        "Message_7": "You rolled a 7 on Uno! Skip a turn.",
+        "Message_12": "You rolled a 12 on Uno! Reverse direction.",
+        "Message_5": "You rolled a 5 on Uno! Play a card of any color.",
+        "Message_9": "You rolled a 9 on Uno! Trade hands with another player.",
+        "Message_3": "You rolled a 3 on Uno! Pick a color for the next player.",
+        "Message_11": "You rolled an 11 on Uno! Make a rule.",
+        "Message_8": "You rolled an 8 on Uno! Choose the next player to draw four cards.",
+        "Message_6": "You rolled a 6 on Uno! Play again.",
+        "Message_4": "You rolled a 4 on Uno! Everyone passes their hand to the left.",
+        "Message_10": "You rolled a 10 on Uno! Everyone skips a turn."
+    }
+
+}

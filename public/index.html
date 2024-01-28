@@ -17,17 +17,61 @@
             document.getElementById(`result${player}`).innerText = `Position: ${playerData.position} - Country: ${playerData.country} - Money Available: ${playerData.money}`;
         }
 
+        // Function to update position, country, and Uno information in the HTML
         async function updatePlayerData(player) {
             const response = await fetch(`/getPlayerData${player}`);
             const data = await response.json();
             console.log("Data received:", data);
-            document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country} - Money available: ${dataZ.money}`;
+
+            if (data.country === 'uno') {
+                // If the player is on Uno, use handleUno route
+                const diceSum = await fetch(`/getLastRoll/${player}`);
+                const diceSumNumber = await diceSum.json();
+                console.log(diceSumNumber.diceSum);
+                await handleUno(player, diceSumNumber.diceSum);
+            } else {
+                // Fetch ticket data based on the player's current position
+                const ticketResponse = await fetch(`/getPlayerTicketData/${player}`);
+                const ticketData = await ticketResponse.json();
+                console.log("Ticket Data:", ticketData);
+
+                document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country} - Money available: ${data.money}`;
+
+                if (ticketData) {
+                    // Update HTML with ticket-specific information
+                    document.getElementById(`ticketInfo${player}`).innerText = JSON.stringify(ticketData, null, 2);
+                } else {
+                    // Clear ticket-specific information if not available
+                    document.getElementById(`ticketInfo${player}`).innerText = "";
+                }
+            }
+        }
+
+        // Function to handle Uno case and display message
+        async function handleUno(player, diceSum) {
+            const unoResponse = await fetch(`/handleUno/${player}/${diceSum}`);
+            const unoData = await unoResponse.json();
+            const response = await fetch(`/getPlayerData${player}`);
+            const data = await response.json();
+            console.log("Data received:", data);
+
+            console.log(unoData);
+
+            if (unoData.message) {
+                console.log("Uno Message:", unoData.message);
+                // Display the Uno message in the ticket information
+                document.getElementById(`ticketInfo${player}`).innerText = `Uno Message: ${unoData.message}`;
+                // Update the result element as well if needed
+                document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Uno`;
+            } else {
+                console.log("Error handling Uno");
+            }
         }
 
         // Update positions every second (adjust the interval as needed)
         setInterval(() => {
-            updatePosition(1);
-            updatePosition(2);
+            updatePlayerData(1);
+            updatePlayerData(2);
         }, 1000);
     </script>
 </head>
@@ -38,6 +82,7 @@
     <div>
         <button type="button" id="player1" onclick="rollDice(1)">Roll</button>
         <p id="result1"></p>
+        <div id="ticketInfo1"></div>
     </div>
     <div>
         Player 2
@@ -45,6 +90,7 @@
     <div>
         <button type="button" id="player2" onclick="rollDice(2)">Roll</button>
         <p id="result2"></p>
+        <div id="ticketInfo2"></div>
     </div>
 </body>
 </html>
