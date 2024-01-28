@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business</title>
+    <link rel="icon" href="C:\Users\alanm\OneDrive\Documents\Business\logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script>
         async function rollDice(player) {
@@ -24,13 +26,16 @@
             console.log("Data received:", data);
 
             if (data.country === 'uno') {
-                // If the player is on Uno, use handleUno route
-                const diceSum = await fetch(`/getLastRoll/${player}`);
-                const diceSumNumber = await diceSum.json();
+                const diceSumResponse = await fetch(`/getLastRoll/${player}`);
+                const diceSumNumber = await diceSumResponse.json();
                 console.log(diceSumNumber.diceSum);
                 await handleUno(player, diceSumNumber.diceSum);
+            } else if (data.country === 'chance') {
+                const diceSumResponse = await fetch(`/getLastRoll/${player}`);
+                const diceSumNumber = await diceSumResponse.json();
+                console.log(diceSumNumber.diceSum);
+                await handleChance(player, diceSumNumber.diceSum);
             } else {
-                // Fetch ticket data based on the player's current position
                 const ticketResponse = await fetch(`/getPlayerTicketData/${player}`);
                 const ticketData = await ticketResponse.json();
                 console.log("Ticket Data:", ticketData);
@@ -38,14 +43,13 @@
                 document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country} - Money available: ${data.money}`;
 
                 if (ticketData) {
-                    // Update HTML with ticket-specific information
                     document.getElementById(`ticketInfo${player}`).innerText = JSON.stringify(ticketData, null, 2);
                 } else {
-                    // Clear ticket-specific information if not available
                     document.getElementById(`ticketInfo${player}`).innerText = "";
                 }
             }
         }
+
 
         // Function to handle Uno case and display message
         async function handleUno(player, diceSum) {
@@ -68,6 +72,26 @@
             }
         }
 
+        //functio to handle chance
+        async function handleChance(player, diceSum) {
+            const chanceResponse = await fetch(`/handleChance/${player}/${diceSum}`);
+            const chanceData = await chanceResponse.json();
+            const response = await fetch(`/getPlayerData${player}`);
+            const data = await response.json();
+            console.log("Data received:", data);
+
+            console.log(chanceData);
+
+            if (chanceData.message) {
+                console.log("Chance Message:", chanceData.message);
+                // Display the Chance message in the ticket information
+                document.getElementById(`ticketInfo${player}`).innerText = `Chance Message: ${chanceData.message}`;
+                // Update the result element as well if needed
+                document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Chance`;
+            } else {
+                console.log("Error handling Chance");
+            }
+        }
         // Update positions every second (adjust the interval as needed)
         setInterval(() => {
             updatePlayerData(1);
@@ -75,6 +99,7 @@
         }, 1000);
     </script>
 </head>
+
 <body>
     <div>
         Player 1
@@ -93,4 +118,5 @@
         <div id="ticketInfo2"></div>
     </div>
 </body>
+
 </html>

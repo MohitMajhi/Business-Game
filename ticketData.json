@@ -388,17 +388,29 @@
         "Bank_Mortgage_Value": 3500
     },
     "uno":{
-        "Message_2": "You rolled a 2 on Uno! Draw two cards.",
-        "Message_7": "You rolled a 7 on Uno! Skip a turn.",
-        "Message_12": "You rolled a 12 on Uno! Reverse direction.",
-        "Message_5": "You rolled a 5 on Uno! Play a card of any color.",
-        "Message_9": "You rolled a 9 on Uno! Trade hands with another player.",
-        "Message_3": "You rolled a 3 on Uno! Pick a color for the next player.",
-        "Message_11": "You rolled an 11 on Uno! Make a rule.",
-        "Message_8": "You rolled an 8 on Uno! Choose the next player to draw four cards.",
-        "Message_6": "You rolled a 6 on Uno! Play again.",
-        "Message_4": "You rolled a 4 on Uno! Everyone passes their hand to the left.",
-        "Message_10": "You rolled a 10 on Uno! Everyone skips a turn."
+        "Message_2": "Its your Anniversary collect from each player $500",
+        "Message_3": "Go to Jail",
+        "Message_4": "1st prize in beauty contest $2500",
+        "Message_5": "School and Medical Fees $2500",
+        "Message_6": "Income Tax Refund $2000",
+        "Message_7": "Submit your Passport",
+        "Message_8": "Go to Party house and collect from each player $200",
+        "Message_9": "Make General Repair on all of your properties for each house $50 for each Hotel $100",
+        "Message_10": "Receive interest on shares $1500",
+        "Message_11": "Pay insurance Premium $1500",
+        "Message_12": "Sale of stocks collect $3000"
+    },
+    "chance": {
+        "Message_2": "Loss in share market $2000",
+        "Message_3": "Lottary prize $2500",
+        "Message_4": "Fine for accident due to Wrong Driving $1000",
+        "Message_5": "You have won crossword prize $1000",
+        "Message_6": "House Repair $1500",
+        "Message_7": "Collect rent from each player for all of your sites $100",
+        "Message_8": "Loss due to fire in godown $3000",
+        "Message_9": "You have won jackpot of $2000",
+        "Message_10": "Go to Jail",
+        "Message_11": "Prize of best perforamce in Export $1500",
+        "Message_12": "Repair of your car $200"
     }
-
 }

@@ -123,6 +123,7 @@ app.get('/getPlayerTicketData/:player', (req, res) => {
     });
 });
 
+//Handle and retrive data for UNO
 app.get('/handleUno/:player/:diceSum', (req, res) => {
     const player = req.params.player;
     const diceSum = parseInt(req.params.diceSum, 10);
@@ -153,6 +154,37 @@ app.get('/handleUno/:player/:diceSum', (req, res) => {
         }
     });
 });
+
+app.get('/handleChance/:player/:diceSum', (req, res) => {
+    const player = req.params.player;
+    const diceSum = parseInt(req.params.diceSum, 10);
+
+    if (isNaN(diceSum)) {
+        res.status(400).send('Invalid dice sum');
+        return;
+    }
+
+    const chanceFilePath = path.join(__dirname, 'ticketData.json');
+    fs.readFile(chanceFilePath, 'utf8', (err, chanceData) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        const chanceJson = JSON.parse(chanceData);
+
+        // Retrieve Chance message based on the dice sum
+        const chanceMessage = chanceJson.chance[`Message_${diceSum}`];
+
+        if (chanceMessage) {
+            res.send({ message: chanceMessage });
+        } else {
+            res.status(404).send('Chance message not found');
+        }
+    });
+});
+
 
 // Function to read a JSON file
 function readJsonFile(filename) {
