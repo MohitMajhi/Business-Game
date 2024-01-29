@@ -5,19 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business</title>
-    <link rel="icon" href="C:\Users\alanm\OneDrive\Documents\Business\logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/logo1.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <script>
-        async function rollDice(player) {
-            const response = await fetch(`/rollDice${player}`);
-            const data = await response.text();
-            console.log(data);
+        let lastRolledPlayer = 0; // Variable to track the last rolled player
+        let popupClosed = true; // Variable to track if the popup
 
-            // Fetch the position after rolling the dice
-            const playerDataResponse = await fetch(`/getPlayerData${player}`);
-            const playerData = await playerDataResponse.json();
-            document.getElementById(`result${player}`).innerText = `Position: ${playerData.position} - Country: ${playerData.country} - Money Available: ${playerData.money}`;
+        async function rollDice(player) {
+        const response = await fetch(`/rollDice${player}`);
+        const data = await response.text();
+        console.log(data);
+
+        // Fetch the position after rolling the dice
+        const playerDataResponse = await fetch(`/getPlayerData${player}`);
+        const playerData = await playerDataResponse.json();
+        document.getElementById(`result${player}`).innerText = `Position: ${playerData.position} - Country: ${playerData.country} - Money Available: ${playerData.money}`;
+
+        // Show the popup only if the player has rolled the dice
+        if (playerData.position !== 0) {
+            lastRolledPlayer = player;
+            showPopup(`Player ${player} has rolled the dice!\n${data}`);
+            // Update player data when the button is clicked
+            updatePlayerData(player);
         }
+    }
 
         // Function to update position, country, and Uno information in the HTML
         async function updatePlayerData(player) {
@@ -43,12 +54,12 @@
                 document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Country: ${data.country} - Money available: ${data.money}`;
 
                 if (ticketData) {
-                    document.getElementById(`ticketInfo${player}`).innerText = JSON.stringify(ticketData, null, 2);
-                } else {
-                    document.getElementById(`ticketInfo${player}`).innerText = "";
+                    // Show ticket information in the popup window
+                    showPopup(`Ticket Info for Player ${player}:\n${JSON.stringify(ticketData, null, 2)}`);
                 }
             }
         }
+
 
 
         // Function to handle Uno case and display message
@@ -63,8 +74,8 @@
 
             if (unoData.message) {
                 console.log("Uno Message:", unoData.message);
-                // Display the Uno message in the ticket information
-                document.getElementById(`ticketInfo${player}`).innerText = `Uno Message: ${unoData.message}`;
+                // Show Uno message in the popup window
+                showPopup(`Uno Message for Player ${player}:\n${unoData.message}`);
                 // Update the result element as well if needed
                 document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Uno`;
             } else {
@@ -72,7 +83,7 @@
             }
         }
 
-        //functio to handle chance
+        //function to handle chance
         async function handleChance(player, diceSum) {
             const chanceResponse = await fetch(`/handleChance/${player}/${diceSum}`);
             const chanceData = await chanceResponse.json();
@@ -84,19 +95,42 @@
 
             if (chanceData.message) {
                 console.log("Chance Message:", chanceData.message);
-                // Display the Chance message in the ticket information
-                document.getElementById(`ticketInfo${player}`).innerText = `Chance Message: ${chanceData.message}`;
+                // Show Chance message in the popup window
+                showPopup(`Chance Message for Player ${player}:\n${chanceData.message}`);
                 // Update the result element as well if needed
                 document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Chance`;
             } else {
                 console.log("Error handling Chance");
             }
         }
-        // Update positions every second (adjust the interval as needed)
-        setInterval(() => {
+
+        // Function to show popup window
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            const popupContent = document.getElementById('popup-content');
+            const closeBtn = document.getElementById('close-btn');
+
+            popupContent.textContent = message;
+            popup.style.display = 'block';
+
+            // Close the popup when the close button is clicked
+            closeBtn.onclick = function () {
+                popup.style.display = 'none';
+            };
+
+            // Close the popup when clicking outside the popup
+            window.onclick = function (event) {
+                if (event.target === popup) {
+                    popup.style.display = 'none';
+                }
+            };
+        }
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            // Update data when the page is loaded
             updatePlayerData(1);
             updatePlayerData(2);
-        }, 1000);
+        });
     </script>
 </head>
 
@@ -117,6 +151,11 @@
         <p id="result2"></p>
         <div id="ticketInfo2"></div>
     </div>
+    <div id="popup" class="popup">
+        <span id="close-btn" class="close">&times;</span>
+        <div id="popup-content"></div>
+    </div>
+
 </body>
 
 </html>
