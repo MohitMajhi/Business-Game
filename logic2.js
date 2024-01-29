@@ -185,6 +185,51 @@ app.get('/handleChance/:player/:diceSum', (req, res) => {
     });
 });
 
+function getPopupClosedStatus() {
+    const filePath = path.join(__dirname, 'popupStatus.json');
+    try {
+        // Read the JSON file to get the popup status
+        const rawData = fs.readFileSync(filePath);
+        const popupStatus = JSON.parse(rawData);
+        return popupStatus.popupClosed === true;
+    } catch (error) {
+        // Handle file read or JSON parse error
+        console.error('Error reading popup status:', error);
+        return true; // Return true by default if there's an error
+    }
+}
+
+app.get('/getPopupStatus', (req, res) => {
+    const popupClosedStatus = getPopupClosedStatus();
+    res.json({ popupClosed: popupClosedStatus });
+});
+
+app.post('/updatePopupStatus', (req, res) => {
+    const newStatus = req.query.status;
+
+    if (newStatus !== 'true' && newStatus !== 'false') {
+        return res.status(400).send('Invalid status parameter');
+    }
+
+    try {
+        // Read the existing status from the JSON file
+        const filePath = path.join(__dirname, 'popupStatus.json');
+        const rawData = fs.readFileSync(filePath);
+        const popupStatus = JSON.parse(rawData);
+
+        // Update the status
+        popupStatus.popupClosed = newStatus === 'true';
+
+        // Write the updated status back to the file
+        fs.writeFileSync(filePath, JSON.stringify(popupStatus, null, 2));
+
+        res.send('Popup status updated successfully');
+    } catch (error) {
+        // Handle file read/write error or invalid JSON format
+        console.error('Error updating popup status:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 // Function to read a JSON file
 function readJsonFile(filename) {
