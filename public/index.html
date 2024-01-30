@@ -161,6 +161,18 @@
             }
         }
 
+        async function resetGame() {
+            const response = await fetch('/resetGame');
+            if (response.ok) {
+                console.log('Game reset successfully');
+                updatePlayerData(1);
+                updatePlayerData(2);
+                // You can add any additional logic or UI updates after resetting the game
+            } else {
+                console.error('Failed to reset the game');
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", async function () {
             // Update data when the page is loaded
             updatePlayerData(1);
@@ -191,6 +203,9 @@
         <div id="popup-content"></div>
     </div>
 
+    <div>
+        <button type="button" id="resetBtn" onclick="resetGame()">Reset Game</button>
+    </div>
 </body>
 
 </html>

@@ -62,6 +62,7 @@ function updatePlayerData(filename, roll) {
         data.position += roll;
     } else {
         data.position = (data.position + roll) - 36;
+        data.money+=1500;
     }
 
     // Get the element value corresponding to the new position
@@ -230,6 +231,32 @@ app.post('/updatePopupStatus', (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+// Route to reset the game
+app.get('/resetGame', (req, res) => {
+    // Reset player data in the JSON files
+    resetPlayerData('player1.json');
+    resetPlayerData('player2.json');
+
+    // You can add additional reset logic here if needed
+
+    res.send('Game reset successfully');
+});
+
+// Function to reset player data in a JSON file
+function resetPlayerData(filename) {
+    const filePath = path.join(__dirname, filename);
+
+    // Reset player data to initial values
+    const initialData = {
+        position: 0,
+        country: gameBoard[0], // Assuming initial country is at position 0
+        money: 1500, // You can set the initial money amount here
+    };
+
+    // Write the initial data back to the file
+    fs.writeFileSync(filePath, JSON.stringify(initialData, null, 2));
+}
 
 // Function to read a JSON file
 function readJsonFile(filename) {
