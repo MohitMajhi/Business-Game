@@ -140,6 +140,7 @@ async function showPopup(message) {
     };
 }
 
+
         // Function to update the popup status on the server
         async function updatePopupStatus(status) {
             try {

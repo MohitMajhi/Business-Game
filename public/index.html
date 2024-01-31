@@ -8,6 +8,45 @@
     <link rel="icon" href="/logo1.ico" type="image/x-icon">
     <!-- <link rel="stylesheet" href="style.css">  -->
     <script src="logic.js"></script>
+    <style>
+        #popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 2px solid #333;
+    background-color: #fff;
+    z-index: 1;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup-content p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+    </style>
 </head>
 
 <body>
