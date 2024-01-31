@@ -96,40 +96,49 @@ let lastRolledPlayer = 0; // Variable to track the last rolled player
         }
 
         // Function to show popup window
-        async function showPopup(message) {
-            const popup = document.getElementById('popup');
-            const popupContent = document.getElementById('popup-content');
-            const closeBtn = document.getElementById('close-btn');
+async function showPopup(message) {
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popup-content');
+    const closeBtn = document.getElementById('close-btn');
 
-            // Fetch popup status from the server
-            const popupStatusResponse = await fetch('/getPopupStatus');
-            const popupStatusData = await popupStatusResponse.json();
+    // Fetch popup status from the server
+    const popupStatusResponse = await fetch('/getPopupStatus');
+    const popupStatusData = await popupStatusResponse.json();
 
-            // Check if the popup is closed
-            if (popupStatusData.popupClosed) {
-                return; // Do not display the popup if it's closed
-            }
+    // Check if the popup is closed
+    if (popupStatusData.popupClosed) {
+        return; // Do not display the popup if it's closed
+    }
 
-            // Display the popup
-            popupContent.textContent = message;
-            popup.style.display = 'block';
+    // Display the popup
+    popupContent.innerHTML = ''; // Clear previous content
 
-            // Close the popup when the close button is clicked
-            closeBtn.onclick = function () {
-                // Update the popup status on the server
-                updatePopupStatus(true);
-                popup.style.display = 'none';
-            };
+    // Format the message for better display
+    const lines = message.split('\n');
+    lines.forEach((line) => {
+        const p = document.createElement('p');
+        p.textContent = line;
+        popupContent.appendChild(p);
+    });
 
-            // Close the popup when clicking outside the popup
-            window.onclick = function (event) {
-                if (event.target === popup) {
-                    // Update the popup status on the server
-                    updatePopupStatus(true);
-                    popup.style.display = 'none';
-                }
-            };
+    popup.style.display = 'block';
+
+    // Close the popup when the close button is clicked
+    closeBtn.onclick = function () {
+        // Update the popup status on the server
+        updatePopupStatus(true);
+        popup.style.display = 'none';
+    };
+
+    // Close the popup when clicking outside the popup
+    window.onclick = function (event) {
+        if (event.target === popup) {
+            // Update the popup status on the server
+            updatePopupStatus(true);
+            popup.style.display = 'none';
         }
+    };
+}
 
         // Function to update the popup status on the server
         async function updatePopupStatus(status) {
