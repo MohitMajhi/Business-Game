@@ -95,7 +95,6 @@ async function handleChance(player, diceSum) {
     }
 }
 
-// Function to show popup window
 async function showPopup(message, data) {
     const popup = document.getElementById('popup');
     const popupContent = document.getElementById('popup-content');
@@ -121,12 +120,60 @@ async function showPopup(message, data) {
         popupContent.appendChild(p);
     });
 
-    // Display ticket data
-    const ticketInfo = document.createElement('div');
-    ticketInfo.innerHTML = '<p><strong>Ticket Information:</strong></p>';
-    displayNestedData(data, ticketInfo);
-    popupContent.appendChild(ticketInfo);
+    // Display ticket information for Silver color tickets
+    if (data.Color === 'Silver') {
+        const ticketInfo = document.createElement('div');
+        ticketInfo.innerHTML = `
+            <div class="business-ticket">
+                <h2>Ticket Information</h2>
+                <div class="property-details">
+                    <p><strong>Color:</strong> ${data.Color}</p>
+                    <p><strong>Price:</strong> ${data.Price}</p>
+                </div>
+                <div class="rent-details">
+                    <h3>Rent Details</h3>
+                    <p><strong>Rent:</strong> ${data.Rent}</p>
+                </div>
+                <p><strong>Bank Mortgage Value:</strong> ${data.Bank_Mortgage_Value}</p>
+                <div class="pair-details">
+                    <h3>Pair Details</h3>
+                    <p><strong>Ticket:</strong> ${data.Pair.ticket}</p>
+                    <p><strong>Price:</strong> ${data.Pair.price}</p>
+                </div>
+            </div>
+        `;
+        popupContent.appendChild(ticketInfo);
+    }
 
+    // Display Business-style ticket information for normal cities
+    else
+    {
+    const ticketInfo = document.createElement('div');
+    ticketInfo.innerHTML = `
+        <div class="business-ticket">
+            <h2>Ticket Information</h2>
+            <div class="property-details">
+                <p><strong>Color:</strong> ${data.Color}</p>
+                <p><strong>Price:</strong> ${data.Price}</p>
+            </div>
+            <div class="rent-details">
+                <h3>Rent Details</h3>
+                <p><strong>Site Only:</strong> ${data.Rent.Site_Only}</p>
+                <p><strong>1 House:</strong> ${data.Rent['1_House']}</p>
+                <p><strong>2 Houses:</strong> ${data.Rent['2_Houses']}</p>
+                <p><strong>3 Houses:</strong> ${data.Rent['3_Houses']}</p>
+                <p><strong>Skyscraper:</strong> ${data.Rent.Hotel}</p>
+            </div>
+            <div class="construction-details">
+                <h3>Construction Details</h3>
+                <p><strong>Cost of Office:</strong> ${data.Construction.Cost_of_house}</p>
+                <p><strong>Cost of Hotel:</strong> ${data.Construction.Cost_of_hotel}</p>
+            </div>
+            <p><strong>Bank Mortgage Value:</strong> ${data.Bank_Mortgage_Value}</p>
+        </div>
+    `;
+    popupContent.appendChild(ticketInfo);
+    }
     popup.style.display = 'block';
 
     // Close the popup when the close button is clicked
@@ -145,34 +192,6 @@ async function showPopup(message, data) {
         }
     };
 }
-
-// Function to display nested data in the popup without underscores
-function displayNestedData(data, container) {
-    Object.keys(data).forEach((key) => {
-        const value = data[key];
-        const p = document.createElement('p');
-
-        // Remove underscores from the key for display
-        const displayKey = key.replace(/_/g, ' ');
-
-        if (typeof value === 'object') {
-            // If the value is an object, recursively display its properties
-            p.innerHTML = `<strong>${displayKey}:</strong>`;
-            const nestedContainer = document.createElement('div');
-            displayNestedData(value, nestedContainer);
-            p.appendChild(nestedContainer);
-        } else {
-            // If the value is not an object, display the key-value pair
-            p.innerHTML = `<strong>${displayKey}:</strong> ${value}`;
-        }
-
-        container.appendChild(p);
-    });
-}
-
-
-
-
 
 // Function to update the popup status on the server
 async function updatePopupStatus(status) {

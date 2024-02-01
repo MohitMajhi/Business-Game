@@ -1,6 +1,7 @@
 {
     "start":{
-        "Bonus": 1500
+        "Bonus": 1500,
+        "message": "Amount of 1500 has been added to your account for crossing START"
     },
     "singapore":{
         "Color": "Blue",
@@ -57,7 +58,7 @@
         },
         "Bank_Mortgage_Value": 2250
     },
-    "petrolium":{
+    "petroleum":{
         "Color": "Silver",
         "Price": 5500,
         "Rent": 500,
@@ -98,7 +99,8 @@
     },
     "jail":
     {
-        "Bail": 500
+        "Bail": 500,
+        "message": "Pay 500 to get out of jail"
     },
     "australia":{
         "Color": "Yellow",
@@ -191,7 +193,8 @@
         "Bank_Mortgage_Value": 1250
     },
     "party house":{
-        "cost": 200
+        "cost": 200,
+        "message": "Get 100 from each player"
     },
     "italy":{
         "Color": "Red",
@@ -285,7 +288,8 @@
     },
     "resort":
     {
-        "cost": 500
+        "cost": 500,
+        "message":"Give 500 to bank"
     },
     "egypt":{
         "Color": "Green",
