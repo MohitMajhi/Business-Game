@@ -418,6 +418,7 @@
         "Bank_Mortgage_Value": 3500
     },
     "uno":{
+        "position_name": "uno",
         "Message_2": "Its your Anniversary collect from each player $500",
         "Message_3": "Go to Jail",
         "Message_4": "1st prize in beauty contest $2500",
@@ -431,6 +432,7 @@
         "Message_12": "Sale of stocks collect $3000"
     },
     "chance": {
+        "position_name": "chance",
         "Message_2": "Loss in share market $2000",
         "Message_3": "Lottary prize $2500",
         "Message_4": "Fine for accident due to Wrong Driving $1000",

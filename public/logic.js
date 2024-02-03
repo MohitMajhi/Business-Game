@@ -54,8 +54,10 @@ async function updatePlayerData(player) {
 
 
 // Function to handle Uno case and display message
-async function handleUno(player, diceSum) {
-    // Retrieve Uno message based on the dice sum
+async function handleUno(player) {
+    const diceSumResponse = await fetch(`/getLastRoll/${player}`);
+    const diceSumNumber = await diceSumResponse.json();
+    const diceSum = diceSumNumber.diceSum;
     const unoResponse = await fetch(`/handleUno/${player}/${diceSum}`);
     const unoData = await unoResponse.json();
     const response = await fetch(`/getPlayerData${player}`);
@@ -70,16 +72,16 @@ async function handleUno(player, diceSum) {
         showPopup(`Uno Message for Player ${player}:\n${unoData.message}`);
         // Update the result element as well if needed
         document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Uno`;
-
-        // Update player data after handling Uno
-        updatePlayerData(player);
     } else {
         console.log("Error handling Uno");
     }
 }
 
-async function handleChance(player, diceSum) {
-    // Retrieve Chance message based on the dice sum
+// Function to handle chance
+async function handleChance(player) {
+    const diceSumResponse = await fetch(`/getLastRoll/${player}`);
+    const diceSumNumber = await diceSumResponse.json();
+    const diceSum = diceSumNumber.diceSum;
     const chanceResponse = await fetch(`/handleChance/${player}/${diceSum}`);
     const chanceData = await chanceResponse.json();
     const response = await fetch(`/getPlayerData${player}`);
@@ -94,14 +96,10 @@ async function handleChance(player, diceSum) {
         showPopup(`Chance Message for Player ${player}:\n${chanceData.message}`);
         // Update the result element as well if needed
         document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Chance`;
-
-        // Update player data after handling Chance
-        updatePlayerData(player);
     } else {
         console.log("Error handling Chance");
     }
 }
-
 async function showPopup(message, data) {
     const popup = document.getElementById('popup');
     const popupContent = document.getElementById('popup-content');
@@ -140,6 +138,18 @@ async function showPopup(message, data) {
         popupContent.appendChild(ticketInfo);
     }
 
+    else if (data.position_name === "uno" || data.position_name === "chance"){
+        const ticketInfo = document.createElement('div');
+        ticketInfo.innerHTML = `
+            <div class="business-ticket">
+                <h2>Ticket Information</h2>
+                <div class="property-details">
+                    ${data.message}
+                </div>
+            </div>
+            `;
+        popupContent.appendChild(ticketInfo);
+    }
 
     // Display ticket information for Silver color tickets
     else if (data.Color === 'Silver') {
