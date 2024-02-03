@@ -43,7 +43,10 @@
         "Price": 9500,
         "Rent": 1500,
         "Bank_Mortgage_Value": 5000,
-        "Pair": 2500
+        "Pair":{
+            "ticket": "roadways",
+            "price": 2500
+        }
     },
     "china":{
         "position_name":"CHINA",
@@ -68,7 +71,10 @@
         "Price": 5500,
         "Rent": 500,
         "Bank_Mortgage_Value": 1300,
-        "Pair": 1000
+        "Pair":{
+            "ticket": "airways",
+            "price": 1000
+        }
     },
     "saudi arabia":{
         "position_name": "SAUDI ARABIA",

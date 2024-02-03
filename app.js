@@ -21,6 +21,9 @@ app.get('/rollDice1', (req, res) => {
     // Update the result in the HTML file
     const result = `Dice 1: ${randomNum1} \n Dice 2: ${randomNum2}`;
     previous_dice_sum1 = randomNum1+randomNum2;
+    
+    console.log(previous_dice_sum1);
+
     res.send(result);
 
     // Update the position in the JSON file
@@ -43,8 +46,14 @@ app.get('/rollDice2', (req, res) => {
 
 app.get('/getLastRoll/:player', (req, res) => {
     const player = req.params.player;
-    if(player===1)
+
+    // Convert player to a number
+    const playerNumber = parseInt(player, 10);
+
+    if(playerNumber===1){
     res.json({ diceSum: previous_dice_sum1 });
+    console.log(previous_dice_sum1);
+    }
     else
     res.json({ diceSum: previous_dice_sum2 });
 })

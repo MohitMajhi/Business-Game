@@ -13,9 +13,9 @@ async function rollDice(player) {
 
     updatePopupStatus(false);
     // Show the popup only if the player has rolled the dice
-    if (playerData.position !== 0) {
+    if (playerData.position !== -1) {
         lastRolledPlayer = player;
-        showPopup(`Player ${player} has rolled the dice!\n${data}`);
+        // showPopup(`Player ${player} has rolled the dice!\n${data}`);
         // Update player data when the button is clicked
         updatePlayerData(player);
     }
@@ -54,10 +54,7 @@ async function updatePlayerData(player) {
 
 
 // Function to handle Uno case and display message
-async function handleUno(player) {
-    const diceSumResponse = await fetch(`/getLastRoll/${player}`);
-    const diceSumNumber = await diceSumResponse.json();
-    const diceSum = diceSumNumber.diceSum;
+async function handleUno(player, diceSum) {
     const unoResponse = await fetch(`/handleUno/${player}/${diceSum}`);
     const unoData = await unoResponse.json();
     const response = await fetch(`/getPlayerData${player}`);
@@ -77,11 +74,8 @@ async function handleUno(player) {
     }
 }
 
-// Function to handle chance
-async function handleChance(player) {
-    const diceSumResponse = await fetch(`/getLastRoll/${player}`);
-    const diceSumNumber = await diceSumResponse.json();
-    const diceSum = diceSumNumber.diceSum;
+//function to handle chance
+async function handleChance(player, diceSum) {
     const chanceResponse = await fetch(`/handleChance/${player}/${diceSum}`);
     const chanceData = await chanceResponse.json();
     const response = await fetch(`/getPlayerData${player}`);
@@ -100,6 +94,7 @@ async function handleChance(player) {
         console.log("Error handling Chance");
     }
 }
+
 async function showPopup(message, data) {
     const popup = document.getElementById('popup');
     const popupContent = document.getElementById('popup-content');
