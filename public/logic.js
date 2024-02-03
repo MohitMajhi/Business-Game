@@ -55,6 +55,7 @@ async function updatePlayerData(player) {
 
 // Function to handle Uno case and display message
 async function handleUno(player, diceSum) {
+    // Retrieve Uno message based on the dice sum
     const unoResponse = await fetch(`/handleUno/${player}/${diceSum}`);
     const unoData = await unoResponse.json();
     const response = await fetch(`/getPlayerData${player}`);
@@ -69,13 +70,16 @@ async function handleUno(player, diceSum) {
         showPopup(`Uno Message for Player ${player}:\n${unoData.message}`);
         // Update the result element as well if needed
         document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Uno`;
+
+        // Update player data after handling Uno
+        updatePlayerData(player);
     } else {
         console.log("Error handling Uno");
     }
 }
 
-//function to handle chance
 async function handleChance(player, diceSum) {
+    // Retrieve Chance message based on the dice sum
     const chanceResponse = await fetch(`/handleChance/${player}/${diceSum}`);
     const chanceData = await chanceResponse.json();
     const response = await fetch(`/getPlayerData${player}`);
@@ -90,6 +94,9 @@ async function handleChance(player, diceSum) {
         showPopup(`Chance Message for Player ${player}:\n${chanceData.message}`);
         // Update the result element as well if needed
         document.getElementById(`result${player}`).innerText = `Position: ${data.position} - Place: Chance`;
+
+        // Update player data after handling Chance
+        updatePlayerData(player);
     } else {
         console.log("Error handling Chance");
     }
@@ -120,8 +127,22 @@ async function showPopup(message, data) {
         popupContent.appendChild(p);
     });
 
+    if(data.position_name === "START" || data.position_name === "JAIL" || data.position_name === "RESORT" || data.position_name === "PARTY HOUSE"){
+        const ticketInfo = document.createElement('div');
+        ticketInfo.innerHTML = `
+            <div class="business-ticket">
+                <h2>Ticket Information</h2>
+                <div class="property-details">
+                    ${data.message}
+                </div>
+            </div>
+            `;
+        popupContent.appendChild(ticketInfo);
+    }
+
+
     // Display ticket information for Silver color tickets
-    if (data.Color === 'Silver') {
+    else if (data.Color === 'Silver') {
         const ticketInfo = document.createElement('div');
         ticketInfo.innerHTML = `
             <div class="business-ticket">

@@ -1,9 +1,10 @@
 {
     "start":{
-        "Bonus": 1500,
+        "position_name": "START",
         "message": "Amount of 1500 has been added to your account for crossing START"
     },
     "singapore":{
+        "position_name": "SINGAPORE",
         "Color": "Blue",
         "Price": 3000,
         "Rent": {
@@ -20,6 +21,7 @@
         "Bank_Mortgage_Value": 1500
     },
     "mylesia":{
+        "position_name": "MYLESIA",
         "Color": "Green",
         "Price": 1500,
         "Rent": {
@@ -36,6 +38,7 @@
         "Bank_Mortgage_Value": 800
     },
     "railways":{
+        "position_name": "RAILWAYS",
         "Color": "Silver",
         "Price": 9500,
         "Rent": 1500,
@@ -43,6 +46,7 @@
         "Pair": 2500
     },
     "china":{
+        "position_name":"CHINA",
         "Color": "Blue",
         "Price": 4500,
         "Rent": {
@@ -59,6 +63,7 @@
         "Bank_Mortgage_Value": 2250
     },
     "petroleum":{
+        "position_name": "PETROLEUM",
         "Color": "Silver",
         "Price": 5500,
         "Rent": 500,
@@ -66,6 +71,7 @@
         "Pair": 1000
     },
     "saudi arabia":{
+        "position_name": "SAUDI ARABIA",
         "Color": "Green",
         "Price": 5500,
         "Rent": {
@@ -82,6 +88,7 @@
         "Bank_Mortgage_Value": 2800
     },
     "india":{
+        "position_name": "INDIA",
         "Color": "Blue",
         "Price": 4500,
         "Rent": {
@@ -99,10 +106,11 @@
     },
     "jail":
     {
-        "Bail": 500,
+        "position_name": "JAIL",
         "message": "Pay 500 to get out of jail"
     },
     "australia":{
+        "position_name": "AUSTRALIA",
         "Color": "Yellow",
         "Price": 3300,
         "Rent": {
@@ -119,6 +127,7 @@
         "Bank_Mortgage_Value": 2000
     },
     "hong kong":{
+        "position_name": "HONG KONG",
         "Color": "Blue",
         "Price": 2000,
         "Rent": {
@@ -135,6 +144,7 @@
         "Bank_Mortgage_Value": 1000
     },
     "mexico":{
+        "position_name": "MEXICO",
         "Color": "Yellow",
         "Price": 4000,
         "Rent": {
@@ -151,6 +161,7 @@
         "Bank_Mortgage_Value": 2000
     },
     "roadways":{
+        "position_name": "ROAD WAYS",
         "Color": "Silver",
         "Price": 3500,
         "Rent": 800,
@@ -161,6 +172,7 @@
         } 
     },
     "usa":{
+        "position_name": "USA",
         "Color": "Yellow",
         "Price": 8500,
         "Rent": {
@@ -177,6 +189,7 @@
         "Bank_Mortgage_Value": 5000
     },
     "japan":{
+        "position_name": "JAPAN",
         "Color": "Blue",
         "Price": 2500,
         "Rent": {
@@ -193,10 +206,11 @@
         "Bank_Mortgage_Value": 1250
     },
     "party house":{
-        "cost": 200,
+        "position_name": "PARTY HOUSE",
         "message": "Get 100 from each player"
     },
     "italy":{
+        "position_name": "ITALY",
         "Color": "Red",
         "Price": 3500,
         "Rent": {
@@ -213,6 +227,7 @@
         "Bank_Mortgage_Value": 1000
     },
     "brazil":{
+        "position_name": "BRAZIL",
         "Color": "Yellow",
         "Price": 2500,
         "Rent": {
@@ -229,6 +244,7 @@
         "Bank_Mortgage_Value": 1300
     },
     "switzerland":{
+        "position_name": "SWITZERLAND",
         "Color": "Red",
         "Price": 3500,
         "Rent": {
@@ -245,6 +261,7 @@
         "Bank_Mortgage_Value": 3300
     },
     "airways":{
+        "position_name": "AIRWAYS",
         "Color": "Silver",
         "Price": 10500,
         "Rent": 1500,
@@ -255,6 +272,7 @@
         } 
     },
     "germany":{
+        "position_name": "GERMANY",
         "Color": "Red",
         "Price": 3500,
         "Rent": {
@@ -271,6 +289,7 @@
         "Bank_Mortgage_Value": 1750
     },
     "canada":{
+        "position_name": "CANADA",
         "Color": "Yellow",
         "Price": 4000,
         "Rent": {
@@ -288,10 +307,11 @@
     },
     "resort":
     {
-        "cost": 500,
+        "position_name": "RESORT",
         "message":"Give 500 to bank"
     },
     "egypt":{
+        "position_name": "EGYPT",
         "Color": "Green",
         "Price": 3200,
         "Rent": {
@@ -308,6 +328,7 @@
         "Bank_Mortgage_Value": 1500
     },
     "satellite":{
+        "position_name": "SATELLITE",
         "Color": "Silver",
         "Price": 2000,
         "Rent": 500,
@@ -318,6 +339,7 @@
         } 
     },
     "iran":{
+        "position_name": "IRAN",
         "Color": "Green",
         "Price": 2500,
         "Rent": {
@@ -334,6 +356,7 @@
       "Bank_Mortgage_Value": 1250
     },
     "france":{
+        "position_name": "FRANCE",
         "Color": "Red",
         "Price": 2500,
         "Rent": {
@@ -350,6 +373,7 @@
         "Bank_Mortgage_Value": 1250
     },
     "waterways":{
+        "position_name": "WATERWAYS",
         "Color": "Silver",
         "Price": 9500,
         "Rent": 1400,
@@ -360,6 +384,7 @@
         } 
     },
     "iraq":{
+        "position_name": "IRAQ",
         "Color": "Green",
         "Price": 5000,
         "Rent": {
@@ -376,6 +401,7 @@
         "Bank_Mortgage_Value": 2500
     },
     "england":{
+        "position_name": "ENGLAND",
         "Color": "Red",
         "Price": 2500,
         "Rent": {
